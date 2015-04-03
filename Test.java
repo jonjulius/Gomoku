@@ -19,7 +19,7 @@ public class Test {
     /**
      * @param args the command line arguments
      * @throws java.security.NoSuchAlgorithmException
-     * @throws java.io.UnsupportedEncodingException -85, 95, 118, -60, -62, -22, -39, -81, 84, 97, 86, -42, 62, 118, -35, 89, 64, -95, -64, -96
+     * @throws java.io.UnsupportedEncodingException 
      */
     public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         String test = "Hello world!";

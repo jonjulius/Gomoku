@@ -1,3 +1,11 @@
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Team One
  * GUI Implementation
@@ -145,9 +153,18 @@ public class LoginView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBActionPerformed
+    private void loginBActionPerformed(java.awt.event.ActionEvent evt) throws UnsupportedEncodingException, NoSuchAlgorithmException {//GEN-FIRST:event_loginBActionPerformed
         controller.newConnection();
-        controller.login(usernameTF.getText(), passwordTF.getPassword());
+       
+        char[] passwordArray = passwordTF.getPassword(); 
+        
+        String password = new String(passwordArray); //Convert input into String
+        MessageDigest digest = MessageDigest.getInstance("SHA-1"); //Do the hashing
+        digest.reset();
+        byte[] input = digest.digest(password.getBytes("UTF-8"));
+        passwordArray = Arrays.toString(input).toCharArray();
+  
+        controller.login(usernameTF.getText(), passwordArray);
         
     }//GEN-LAST:event_loginBActionPerformed
 
